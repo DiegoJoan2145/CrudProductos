@@ -1,5 +1,7 @@
 const producto = require("../models/producto");
 const Producto = require("../models/producto");
+const multer = require('multer');
+const upload = multer();
 
 exports.crearProducto = async (req, res) => {
     try {
@@ -7,6 +9,7 @@ exports.crearProducto = async (req, res) => {
 
         //creamos el producto
         producto = new Producto(req.body);
+        console.log(req.body)
         await producto.save();
         res.send(producto);
 
